@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bhavya Chemistry Classes — Learning Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#4c2bdc">
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- NAV / HEADER -->
+    <header class="topbar">
+      <div class="topbar-inner container">
+        <div class="brand" role="banner">
+          <img src="https://yt3.googleusercontent.com/ytc/AIdro_k5yT_jZxgLNmYa2EBo0F5f9xbYLXHOa--VyuLpnwdTVk0=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="brand-deco">
+          <div>
+            <h1>Bhavya <span class="accent">Chemistry</span> Classes</h1>
+            <p class="tagline">Master Chemistry — From Basics to JEE / NEET</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-toggle" id="navToggle" aria-expanded="false">☰</button>
+          <ul class="nav-list" id="navList">
+            <li><a href="#home" data-view="home" class="nav-link active">Home</a></li>
+            <li><a href="#courses" data-view="courses" class="nav-link">Courses</a></li>
+            <li><a href="#resources" data-view="resources" class="nav-link">Resources</a></li>
+            <li><a href="#upload" data-view="upload" class="nav-link">Upload</a></li>
+            <li><a href="#contact" data-view="contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT (sections act like pages) -->
+    <main class="main container">
+
+      <!-- HOME -->
+      <section id="home" class="view view--active">
+        <div class="hero-card">
+          <div class="hero-left">
+            <h2>Ready to turn confusion into clarity?</h2>
+            <p class="lead">
+              At <strong>Bhavya Chemistry Classes</strong> we transform average grades into outstanding results — concept-first learning for Class 9–12, NEET, and JEE aspirants.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn primary" data-view-link="courses">Explore Courses</a>
+              <a class="btn ghost" data-view-link="contact">Register Now</a>
+            </div>
+
+            <ul class="why-list">
+              <li><strong>Concept-based learning:</strong> Understand the why, not just the how.</li>
+              <li><strong>Small batches:</strong> Personal attention & fast doubt resolution.</li>
+              <li><strong>Smart notes & tests:</strong> Chapter tests, tracking & tailored plans.</li>
+            </ul>
+
+            <div class="badges">
+              <span class="badge">JEE / NEET Focused</span>
+              <span class="badge">Personal Attention</span>
+              <span class="badge">Exam-ready Notes</span>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="card glass promo">
+              <h4>Batch Fee Structure</h4>
+              <ul class="fees">
+                <li>CBSE Class X – ₹6,500 / year</li>
+                <li>Class XI – ₹8,000 / year</li>
+                <li>Class XII – ₹8,000 / year</li>
+                <li>UP Board Class X – ₹2,400 / year</li>
+                <li>Class XI – ₹2,500 / year</li>
+                <li>Class XII – ₹3,600 / year</li>
+              </ul>
+              <a class="btn small" data-view-link="contact">Contact & Register</a>
+            </div>
+
+            <div class="card stats">
+              <div class="stat">
+                <strong>Small</strong><span>Batch Size</span>
+              </div>
+              <div class="stat">
+                <strong>Smart</strong><span>Notes & Tricks</span>
+              </div>
+              <div class="stat">
+                <strong>Track</strong><span>Performance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COURSES -->
+      <section id="courses" class="view">
+        <div class="page-head">
+          <h2>Courses</h2>
+          <p class="lead">Structured, concept-driven chemistry coaching for school and competitive exams.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="course card">
+            <h3>Class 11 & 12 Chemistry</h3>
+            <p>Complete syllabus coverage with concept clarity & solved examples.</p>
+            <div class="meta">CBSE / State Boards</div>
+          </article>
+
+          <article class="course card">
+            <h3>NEET Chemistry Preparation</h3>
+            <p>Focused theory, MCQ practice, tricks for quick revision and mock tests.</p>
+            <div class="meta">Exam-oriented</div>
+          </article>
+
+          <article class="course card">
+            <h3>JEE (Main & Advanced)</h3>
+            <p>Advanced problem solving, time-management & previous year analysis.</p>
+            <div class="meta">Competitive</div>
+          </article>
+
+          <article class="course card">
+            <h3>Crash Courses</h3>
+            <p>Targeted high-impact revision before exams.</p>
+            <div class="meta">Short & intense</div>
+          </article>
+
+          <article class="course card">
+            <h3>One-on-one Doubt Sessions</h3>
+            <p>Personal attention for difficult topics & test feedback.</p>
+            <div class="meta">Personalized</div>
+          </article>
+
+          <article class="course card">
+            <h3>Performance Tracking</h3>
+            <p>Regular chapter-wise tests and improvement plans.</p>
+            <div class="meta">Progress reports</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- RESOURCES / GALLERY -->
+      <section id="resources" class="view">
+        <div class="page-head">
+          <h2>Shared Resources</h2>
+          <p class="lead">Notes, PDFs and images uploaded by instructors and students.</p>
+        </div>
+
+        <div id="uploadsGrid" class="uploads-grid">
+          <!-- populated by JS -->
+        </div>
+
+        <div id="noUploads" class="notice">No resources yet. Be the first to upload (Upload →).</div>
+      </section>
+
+      <!-- UPLOAD (password-protected) -->
+      <section id="upload" class="view">
+        <div class="page-head">
+          <h2>Upload Resources (Password Protected)</h2>
+          <p class="lead">Enter the password to unlock the upload form. Password for demo: <em>princedixit123</em></p>
+        </div>
+
+        <div class="card glass auth-card">
+          <div id="pwBox" class="pw-box">
+            <input id="uploadPass" type="password" placeholder="Enter password" aria-label="Upload password">
+            <button class="btn" id="pwCheck">Unlock</button>
+            <div id="pwMsg" class="pw-msg"></div>
+          </div>
+
+          <form id="uploadForm" class="upload-form" style="display:none;">
+            <label>Title <input id="fileTitle" type="text" placeholder="Enter title" required></label>
+            <label>Description <textarea id="fileDesc" rows="2" placeholder="Short description"></textarea></label>
+            <label>Select file <input id="fileInput" type="file" required></label>
+            <div class="row">
+              <button class="btn primary" type="submit">Upload</button>
+              <button class="btn ghost" type="button" id="clearStorage">Clear All Uploads</button>
+            </div>
+            <div id="uploadResult" class="notice small"></div>
+          </form>
+
+          <div class="note small muted">
+            Allowed file types: PDF, PNG, JPG, TXT. Max practical size ~5MB (browser LocalStorage limits). For production use a server.
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="view">
+        <div class="page-head">
+          <h2>Contact & Location</h2>
+          <p class="lead">Visit or reach out to register your seat.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card glass contact-card">
+            <h3>Bhavya Chemistry Classes</h3>
+            <p><strong>Address:</strong> Kartal Road, Naraini, Banda District, Uttar Pradesh – Pin 210129</p>
+            <p><strong>Phone:</strong> 82997 22772</p>
+            <p><strong>Email:</strong> <a href="mailto:nitinshyamdixit28840@gmail.com">nitinshyamdixit28840@gmail.com</a></p>
+            <p class="muted small">Classes in small batches. Regular tests, smart notes and personalized plans included.</p>
+          </div>
+
+          <div class="card form-card">
+            <h3>Register / Enquire</h3>
+            <form id="contactForm">
+              <label>Name <input type="text" id="cname" required></label>
+              <label>Phone <input type="text" id="cphone" required></label>
+              <label>Message <textarea id="cmsg" rows="4" required></textarea></label>
+              <div class="row">
+                <button class="btn primary" type="submit">Send</button>
+                <button class="btn ghost" type="button" id="viewInquiries">View Inquiries</button>
+              </div>
+            </form>
+            <div id="contactResult" class="notice small"></div>
+            <div id="inquiriesList" class="inquiries hidden"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>© Bhavya Chemistry Classes — Kartal Road, Naraini • Phone: 82997 22772</div>
+        <div class="social muted">Website: <a href="https://bhavya-chemistry.netlify.app" target="_blank">bhavya-chemistry.netlify.app</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT: Handles view switching, uploads, password, gallery, contact -->
+  <script>
+  (function(){
+    // ---- simple SPA navigation ----
+    const views = document.querySelectorAll('.view');
+    const navLinks = document.querySelectorAll('.nav-link');
+    function showView(name) {
+      views.forEach(v => v.classList.toggle('view--active', v.id === name));
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.view === name));
+      // close mobile nav if open
+      document.getElementById('navToggle').setAttribute('aria-expanded','false');
+      document.getElementById('navList').classList.remove('open');
+      // scroll top of container
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    // init from hash if present
+    function initRoute() {
+      const hash = location.hash.replace('#','') || 'home';
+      showView(hash);
+    }
+    // nav link clicks
+    document.querySelectorAll('[data-view-link]').forEach(btn=>{
+      btn.addEventListener('click', ()=> showView(btn.dataset.viewLink));
+    });
+    navLinks.forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const v = a.dataset.view;
+        location.hash = v;
+        showView(v);
+      });
+    });
+    window.addEventListener('hashchange', initRoute);
+    initRoute();
+
+    // mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    navToggle.addEventListener('click', ()=> {
+      const list = document.getElementById('navList');
+      const open = list.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // ---- storage keys ----
+    const UP_KEY = 'bhavya_uploads';
+    const IN_KEY = 'bhavya_inquiries';
+    const REAL_PASSWORD = 'princedixit123';
+
+    // ---- Gallery render ----
+    function renderGallery() {
+      const grid = document.getElementById('uploadsGrid');
+      const noUploads = document.getElementById('noUploads');
+      grid.innerHTML = '';
+      const uploads = JSON.parse(localStorage.getItem(UP_KEY) || '[]');
+      if (!uploads.length) {
+        noUploads.style.display = 'block';
+        return;
+      } else {
+        noUploads.style.display = 'none';
+      }
+      uploads.slice().reverse().forEach((u, i) => {
+        const card = document.createElement('div');
+        card.className = 'upload-card card';
+
+        const h = document.createElement('h4'); h.textContent = u.title || 'Untitled';
+        const p = document.createElement('p'); p.textContent = u.description || '';
+        const meta = document.createElement('div'); meta.className = 'meta';
+        meta.textContent = 'Uploaded: ' + new Date(u.time).toLocaleString();
+
+        const actions = document.createElement('div'); actions.className = 'actions';
+        const viewA = document.createElement('a'); viewA.className = 'btn small'; viewA.textContent='View / Download';
+        viewA.href = u.data; viewA.target = '_blank';
+        viewA.download = u.filename || 'resource';
+
+        const del = document.createElement('button'); del.className='btn small ghost'; del.textContent='Delete';
+        del.addEventListener('click', ()=> {
+          if (!confirm('Delete this upload?')) return;
+          const arr = JSON.parse(localStorage.getItem(UP_KEY) || '[]');
+          // find by time
+          const filtered = arr.filter(x => x.time !== u.time);
+          localStorage.setItem(UP_KEY, JSON.stringify(filtered));
+          renderGallery();
+        });
+
+        actions.appendChild(viewA);
+        actions.appendChild(del);
+
+        card.appendChild(h); card.appendChild(p); card.appendChild(meta); card.appendChild(actions);
+        grid.appendChild(card);
+      });
+    }
+    // initial gallery render
+    renderGallery();
+
+    // ---- Upload password and form handling ----
+    const pwCheckBtn = document.getElementById('pwCheck');
+    const uploadPass = document.getElementById('uploadPass');
+    const pwMsg = document.getElementById('pwMsg');
+    const uploadForm = document.getElementById('uploadForm');
+    pwCheckBtn.addEventListener('click', () => {
+      const val = (uploadPass.value || '').trim();
+      if (!val) { pwMsg.textContent = 'Enter the password.'; pwMsg.classList.add('err'); return; }
+      if (val === REAL_PASSWORD) {
+        pwMsg.textContent = 'Unlocked. Upload form visible.';
+        pwMsg.classList.remove('err');
+        document.getElementById('pwBox').style.display = 'none';
+        uploadForm.style.display = 'block';
+      } else {
+        pwMsg.textContent = 'Incorrect password.';
+        pwMsg.classList.add('err');
+      }
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', (e)=> {
+      e.preventDefault();
+      const file = document.getElementById('fileInput').files[0];
+      const title = document.getElementById('fileTitle').value.trim();
+      const desc = document.getElementById('fileDesc').value.trim();
+      const result = document.getElementById('uploadResult');
+      if (!file) { result.textContent = 'Select a file.'; return; }
+      const maxBytes = 5 * 1024 * 1024;
+      if (file.size > maxBytes) { result.textContent = 'File too large (max ~5MB).'; return; }
+
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        const dataUrl = ev.target.result;
+        const uploads = JSON.parse(localStorage.getItem(UP_KEY) || '[]');
+        uploads.push({ title, description: desc, filename: file.name, data: dataUrl, time: Date.now() });
+        try {
+          localStorage.setItem(UP_KEY, JSON.stringify(uploads));
+          result.textContent = 'Upload successful — visible in Resources.';
+          document.getElementById('uploadForm').reset();
+          renderGallery();
+        } catch (err) {
+          console.error(err);
+          result.textContent = 'Upload failed (storage quota?).';
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // clear uploads
+    document.getElementById('clearStorage').addEventListener('click', ()=> {
+      if (!confirm('Clear ALL uploads from this browser?')) return;
+      localStorage.removeItem(UP_KEY);
+      renderGallery();
+      alert('Uploads cleared (local browser storage).');
+    });
+
+    // ---- Contact form handling ----
+    const contactForm = document.getElementById('contactForm');
+    const contactResult = document.getElementById('contactResult');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('cname').value.trim();
+      const phone = document.getElementById('cphone').value.trim();
+      const msg = document.getElementById('cmsg').value.trim();
+      if (!name || !phone || !msg) { contactResult.textContent='Fill all fields.'; return; }
+      const arr = JSON.parse(localStorage.getItem(IN_KEY) || '[]');
+      arr.push({ name, phone, msg, time: Date.now() });
+      localStorage.setItem(IN_KEY, JSON.stringify(arr));
+      contactResult.textContent = 'Thanks! Your enquiry is recorded.';
+      contactForm.reset();
+    });
+
+    // view inquiries
+    document.getElementById('viewInquiries').addEventListener('click', ()=> {
+      const list = document.getElementById('inquiriesList');
+      const arr = JSON.parse(localStorage.getItem(IN_KEY) || '[]');
+      if (!arr.length) { list.innerHTML = '<div class="notice small">No inquiries yet.</div>'; list.classList.remove('hidden'); return; }
+      list.innerHTML = '';
+      arr.slice().reverse().forEach(i => {
+        const div = document.createElement('div'); div.className='inq';
+        div.innerHTML = '<strong>'+escapeHtml(i.name)+'</strong> • '+escapeHtml(i.phone) +
+          '<div class="muted small">'+new Date(i.time).toLocaleString()+'</div>' +
+          '<p>'+escapeHtml(i.msg)+'</p>';
+        list.appendChild(div);
+      });
+      list.classList.remove('hidden');
+      list.scrollIntoView({behavior:'smooth'});
+    });
+
+    // utility escape
+    function escapeHtml(s) { return (s||'').replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+    // expose renderGallery to global (if needed)
+    window.renderGallery = renderGallery;
+
+    // small accessibility: keyboard navigate via left/right
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const order = ['home','courses','resources','upload','contact'];
+        const active = [...document.querySelectorAll('.view')].find(v => v.classList.contains('view--active'));
+        let idx = order.indexOf(active.id);
+        idx = e.key === 'ArrowLeft' ? Math.max(0, idx-1) : Math.min(order.length-1, idx+1);
+        showView(order[idx]);
+        location.hash = order[idx];
+      }
+    });
+
+  })();
+  </script>
+</body>
+</html>
