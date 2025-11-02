@@ -1,0 +1,679 @@
+/* -------------------------------------------------------------------
+   1. ROOT VARIABLES & GLOBAL RESET (The Atomic Structure) ⚛️
+   ------------------------------------------------------------------- */
+
+:root {
+    /* Cyber-Blue Color Palette (Enhanced Compatibility) */
+    --color-bg-deep: #0D1117; /* Dark Mode Deep Background (Improved contrast from absolute black) */
+    --color-bg-mid: #161B22; /* Card/Surface Background */
+    --color-primary: #58A6FF; /* Electric Blue (Key Links, Borders) */
+    --color-accent-neon: #39D3C6; /* Vibrant Cyan/Aqua (Main Glow Accent) */
+    --color-secondary-electric: #C77DFF; /* Electric Violet/Purple (Secondary Glow Accent) */
+    
+    /* Text & UI */
+    --color-text-main: #FFFFFF; /* Pure White for maximum contrast on headings */
+    --color-text-dim: #8B949E; /* Subdued Gray for body text */
+    --color-border-subtle: rgba(255, 255, 255, 0.12); /* Slightly brighter subtle border */
+
+    /* Shadow & Glows (Layered Depth) */
+    --shadow-deep: 0 4px 12px rgba(0, 0, 0, 0.6); /* Softer, less dramatic shadow (Better UI/UX) */
+    --glow-soft: 0 0 8px rgba(57, 211, 198, 0.5); /* Updated soft cyan glow */
+    --glow-strong: 0 0 10px var(--color-accent-neon), 0 0 20px var(--color-secondary-electric); /* Updated strong glow */
+
+    /* Typography & Spacing */
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --spacing-unit: 8px;
+    --radius-sm: 6px;
+    --radius-lg: 12px;
+}
+
+/* Global Font Import (Assuming Inter and Montserrat are available) */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap'); */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: clamp(14px, 0.8vw + 0.7rem, 18px); /* Fluid typography */
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-text-main);
+    background-color: var(--color-bg-deep);
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevents horizontal scroll on complex shadows/gradients */
+}
+
+/* --- BACKGROUND EFFECT (The Deep Lab) --- */
+.app {
+    position: relative;
+    z-index: 1;
+}
+
+/* Subtle texture/noise effect for depth */
+.app::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Updated background gradients to match new primary/secondary electric colors */
+    background: radial-gradient(circle at top left, rgba(88, 166, 255, 0.1), transparent 50%),
+                radial-gradient(circle at bottom right, rgba(199, 125, 255, 0.1), transparent 50%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Typography Overhaul */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-text-main);
+    line-height: 1.1;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    text-shadow: var(--shadow-deep);
+}
+
+h1 { font-size: 2.8rem; font-weight: 900; }
+h2 { font-size: 2rem; font-weight: 800; }
+h3 { font-size: 1.5rem; font-weight: 700; }
+h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: var(--spacing-unit); }
+
+p {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    color: var(--color-text-dim);
+}
+
+a {
+    color: var(--color-accent-neon);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+a:hover {
+    color: var(--color-text-main);
+    text-shadow: 0 0 5px var(--color-accent-neon);
+}
+
+ul {
+    list-style: none;
+}
+strong {
+    color: var(--color-text-main);
+    font-weight: 600;
+}
+
+/* Utility Layouts */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 calc(var(--spacing-unit) * 3);
+}
+.row {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+    align-items: center;
+}
+.accent {
+    color: var(--color-accent-neon);
+    /* Updated text-shadow color for new neon accent */
+    text-shadow: 0 0 5px rgba(57, 211, 198, 0.8);
+}
+.lead {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--color-text-main);
+}
+.muted { color: var(--color-text-dim); }
+
+/* -------------------------------------------------------------------
+   2. UI COMPONENTS (The Interface) 🧪
+   ------------------------------------------------------------------- */
+
+/* --- Card/Panel Styling (Sleek Surface) --- */
+.card {
+    background-color: var(--color-bg-mid);
+    padding: calc(var(--spacing-unit) * 4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-subtle);
+    box-shadow: var(--shadow-deep);
+    transition: all 0.4s ease-in-out;
+}
+
+.card:hover {
+    border-color: var(--color-primary);
+    /* Updated box-shadow to use new primary blue color */
+    box-shadow: var(--shadow-deep), 0 0 15px rgba(88, 166, 255, 0.4);
+}
+
+/* Glassmorphism Effect for Promo Cards */
+.card.glass {
+    background-color: rgba(22, 27, 34, 0.6); /* Using new bg-mid with transparency */
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+
+/* --- Buttons (Energy Cells) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    user-select: none;
+}
+
+.btn.primary {
+    background: var(--color-accent-neon);
+    color: var(--color-bg-deep);
+    box-shadow: var(--glow-soft);
+}
+
+.btn.primary:hover {
+    /* Using the new electric violet accent color */
+    background: var(--color-secondary-electric);
+    color: var(--color-text-main);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--glow-strong);
+}
+
+.btn.ghost {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn.ghost:hover {
+    /* Updated background color for ghost button hover */
+    background: rgba(88, 166, 255, 0.15);
+    color: var(--color-text-main);
+    border-color: var(--color-text-main);
+    transform: translateY(-1px);
+}
+.btn.small {
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    font-size: 0.85rem;
+}
+
+/* --- Forms (Data Input) --- */
+input[type="text"], input[type="password"], input[type="file"], textarea {
+    width: 100%;
+    padding: var(--spacing-unit);
+    margin-top: calc(var(--spacing-unit) / 2);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-mid);
+    color: var(--color-text-main);
+    font-family: var(--font-primary);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-accent-neon);
+    box-shadow: 0 0 5px var(--color-accent-neon);
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+}
+
+/* -------------------------------------------------------------------
+   3. LAYOUT & STRUCTURE 💻
+   ------------------------------------------------------------------- */
+
+.main {
+    padding-top: calc(var(--spacing-unit) * 8);
+    padding-bottom: calc(var(--spacing-unit) * 10);
+}
+
+/* Section/View Transitions */
+.view {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    display: none;
+}
+
+.view--active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+.page-head {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 6);
+    padding-bottom: calc(var(--spacing-unit) * 2);
+    border-bottom: 2px dashed var(--color-border-subtle);
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+    gap: calc(var(--spacing-unit) * 4);
+}
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+
+/* -------------------------------------------------------------------
+   4. TOPBAR (The Command Center) 🛰️
+   ------------------------------------------------------------------- */
+
+.topbar {
+    background-color: rgba(22, 27, 34, 0.9); /* Opaque for scrolling safety (Updated to use new bg-mid) */
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-border-subtle);
+    box-shadow: var(--shadow-deep);
+}
+
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: calc(var(--spacing-unit) * 10);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+.brand h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand-deco {
+    /* Stylized 'B' or molecular icon placeholder */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--color-accent-neon), var(--color-secondary-electric));
+    box-shadow: 0 0 10px var(--color-accent-neon);
+    animation: pulse-glow 3s infinite alternate;
+}
+
+.brand .tagline {
+    font-size: 0.7rem;
+    margin-bottom: 0;
+    color: var(--color-accent-neon);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.nav-list {
+    display: none; /* Default mobile hiding */
+    gap: calc(var(--spacing-unit) * 4);
+    align-items: center;
+}
+
+.nav-link {
+    font-weight: 600;
+    color: var(--color-text-dim);
+    padding: var(--spacing-unit);
+    position: relative;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: var(--color-text-main);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    /* Updated to use new secondary electric color */
+    background-color: var(--color-secondary-electric);
+    transform: translateX(-50%);
+    transition: width 0.3s ease-out;
+}
+
+.nav-link.active::after, .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Mobile Toggle */
+.nav-toggle {
+    display: block;
+    background: none;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent-neon);
+    font-size: 1.2rem;
+    padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.nav-toggle:hover {
+    /* Updated background color to use new primary blue */
+    background-color: rgba(88, 166, 255, 0.2);
+    box-shadow: var(--glow-soft);
+}
+
+
+/* -------------------------------------------------------------------
+   5. HOME VIEW (The Hero) 🌟
+   ------------------------------------------------------------------- */
+
+.hero-card {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 6);
+    align-items: flex-start;
+    padding: calc(var(--spacing-unit) * 4) 0;
+}
+
+.hero-left h2 {
+    font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+    /* Updated background gradient to new colors */
+    background: linear-gradient(90deg, var(--color-text-main), var(--color-accent-neon), var(--color-secondary-electric));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 5px rgba(57, 211, 198, 0.4); /* Updated text shadow color */
+}
+
+.cta-row {
+    margin-top: calc(var(--spacing-unit) * 4);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.why-list {
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* Updated border color to new neon accent */
+    border-left: 3px solid var(--color-accent-neon);
+    padding-left: calc(var(--spacing-unit) * 2);
+}
+
+.why-list li {
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    color: var(--color-text-dim);
+    position: relative;
+    font-size: 0.95rem;
+}
+.why-list li strong {
+    color: var(--color-accent-neon);
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit);
+    margin-top: calc(var(--spacing-unit) * 3);
+}
+
+.badge {
+    background-color: var(--color-primary);
+    color: var(--color-text-main);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: var(--glow-soft);
+    /* Updated border color to new neon accent */
+    border: 1px solid var(--color-accent-neon);
+}
+
+/* Promo/Stats Cards */
+.hero-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 3);
+    position: relative;
+}
+
+.promo.card {
+    /* Updated border color to new secondary electric color */
+    border: 2px solid var(--color-secondary-electric);
+}
+
+.fees li {
+    padding-left: calc(var(--spacing-unit) * 2);
+    margin-bottom: var(--spacing-unit);
+    /* Updated border color to new secondary electric color */
+    border-left: 2px solid var(--color-secondary-electric);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-unit);
+    padding: var(--spacing-unit);
+    text-align: center;
+    background-color: var(--color-bg-mid);
+    border-radius: var(--radius-lg);
+}
+
+.stat {
+    padding: calc(var(--spacing-unit) * 2);
+}
+.stat strong {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-secondary-electric);
+    /* Updated text-shadow color for new secondary electric color */
+    text-shadow: 0 0 5px rgba(199, 125, 255, 0.5);
+}
+
+.stat span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* -------------------------------------------------------------------
+   6. COURSES & RESOURCES (The Database) 🗄️
+   ------------------------------------------------------------------- */
+
+.course.card {
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1px) translateZ(0); /* Hardware acceleration */
+}
+
+.course.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Updated gradient colors to new primary blue and neon accent */
+    background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, transparent 50%, rgba(57, 211, 198, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.course.card:hover::before {
+    opacity: 1;
+}
+
+.course.card:hover {
+    transform: scale(1.03);
+    /* Updated box-shadow to new primary blue color */
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.6), var(--shadow-deep);
+}
+
+.course h3 {
+    /* Updated color to use new primary blue */
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-unit);
+}
+
+.course .meta {
+    display: inline-block;
+    background-color: var(--color-accent-neon);
+    color: var(--color-bg-deep);
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: var(--spacing-unit);
+}
+
+.uploads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 4);
+}
+
+.upload-card {
+    padding: calc(var(--spacing-unit) * 2.5);
+}
+
+.upload-card .meta {
+    font-size: 0.75rem;
+    color: var(--color-accent-neon);
+    margin-bottom: var(--spacing-unit);
+}
+
+.notice {
+    background-color: var(--color-primary);
+    color: var(--color-bg-mid);
+    padding: calc(var(--spacing-unit) * 3);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-top: calc(var(--spacing-unit) * 4);
+    font-weight: 600;
+}
+
+/* -------------------------------------------------------------------
+   7. FOOTER (The Signature) 🖋️
+   ------------------------------------------------------------------- */
+
+.footer {
+    background-color: var(--color-bg-mid);
+    border-top: 1px solid var(--color-border-subtle);
+    padding: calc(var(--spacing-unit) * 3) 0;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-unit);
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+/* -------------------------------------------------------------------
+   8. MEDIA QUERIES (The Adaptive Formula) 🧬
+   ------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+    /* Topbar adjustments */
+    .nav-toggle { display: none; }
+    .nav-list { display: flex; }
+    .brand h1 { font-size: 1.8rem; }
+
+    /* Hero Layout */
+    .hero-card {
+        flex-direction: row;
+        align-items: stretch;
+        gap: calc(var(--spacing-unit) * 8);
+    }
+    .hero-left {
+        flex: 3;
+    }
+    .hero-right {
+        flex: 2;
+        min-width: 350px;
+    }
+
+    .hero-left h2 {
+        font-size: 3.5rem;
+    }
+
+    /* Contact Layout */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr; /* Contact card slightly narrower */
+        gap: calc(var(--spacing-unit) * 4);
+    }
+
+    /* Footer */
+    .footer-inner {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+/* Mobile Navigation Dropdown */
+#navList.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--color-bg-mid);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    width: 100%;
+    max-width: 250px;
+    box-shadow: var(--shadow-deep);
+    z-index: 99;
+}
+
+#navList.open .nav-link {
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+    text-align: right;
+    border-bottom: 1px dashed var(--color-border-subtle);
+}
+
+#navList.open .nav-link:last-child {
+    border-bottom: none;
+}
+
+/* Keyframe Animation for the brand icon glow */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 10px var(--color-accent-neon), 0 0 0 rgba(57, 211, 198, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 15px var(--color-accent-neon), 0 0 20px rgba(199, 125, 255, 0.4);
+    }
+}
